@@ -15,8 +15,6 @@ public class Resrv {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "RESRV_NO")
     private Long resrvNo;
-    private Long prtnNo;
-    private Long estmtNo;
     private Long custNo;
     private String resrvNm;
     private String resrvDate;
@@ -24,4 +22,16 @@ public class Resrv {
     private String pckupPostNo;
     private String pckupLocatn;
     private String pckupLocatnDtl;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CUST_NO")
+    private CustInfoBase custInfoBase;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRTN_NO")
+    private PrtnInfoBase prtnInfoBase;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ESTMT_NO")
+    private Estmt estmt;
 }

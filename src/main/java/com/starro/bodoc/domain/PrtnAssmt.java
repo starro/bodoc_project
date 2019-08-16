@@ -22,4 +22,16 @@ public class PrtnAssmt {
     private int kindnessGrd;
     private String prtnAssmtCntnt;
     private String prtnReply;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CUST_NO")
+    private CustInfoBase custInfoBase;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRTN_NO")
+    private PrtnInfoBase prtnInfoBase;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ESTMT_NO")
+    private Estmt estmt;
 }

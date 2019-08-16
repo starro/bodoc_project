@@ -20,4 +20,16 @@ public class Handwork {
     private String handworkTyp;
     private Long imgMgntNo;
     private String handworkStatus;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRTN_NO")
+    private PrtnInfoBase prtnInfoBase;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ESTMT_NO")
+    private Estmt estmt;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "IMG_MGNT_NO")
+    private ImgMgnt imgMgnt;
 }

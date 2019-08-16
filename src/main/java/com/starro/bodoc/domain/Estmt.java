@@ -16,10 +16,25 @@ public class Estmt {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "ESTMT_NO")
     private Long estmtNo;
-    private Long estmtReqNo;
-    private Long prtnNo;
     private BigDecimal estmtPrice;
     private float expctPiriod;
     private String offrSrvce;
     private String estmtPrCntnt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ESTMT_REQ_NO")
+    private EstmtReqBase estmtReqBase;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRTN_NO")
+    private PrtnInfoBase prtnInfoBase;
+
+    @OneToOne(mappedBy = "estmt")
+    private Resrv resrv;
+
+    @OneToOne(mappedBy = "estmt")
+    private PrtnAssmt prtnAssmt;
+
+    @OneToOne(mappedBy = "estmt")
+    private Handwork handwork;
 }

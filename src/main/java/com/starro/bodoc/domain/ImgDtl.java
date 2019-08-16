@@ -15,7 +15,10 @@ public class ImgDtl {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "IMG_DTL_NO")
     private Long imgDtlNo;
-    private Long imgMgntNo;
     private String imgUrl;
     private String imgExpln;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IMG_MGNT_NO")
+    private ImgMgnt imgMgnt;
 }

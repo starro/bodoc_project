@@ -1,6 +1,8 @@
 package com.starro.bodoc.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by james@starroapp.com on 2019-08-06
@@ -13,7 +15,7 @@ import javax.persistence.*;
 public class PrtnInfoBase {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "CUST_NO")
+    @Column(name = "PRTN_NO")
     private Long prtnNo;
     private String password;
     private String bizNo;
@@ -36,4 +38,20 @@ public class PrtnInfoBase {
     private String imgMgntNo;
     private String prtnIntroCntnt;
     private String actvYn;
+
+    @OneToMany(mappedBy = "prtnInfoBase")
+    private List<Estmt> estmtList = new ArrayList<Estmt>();
+
+    @OneToMany(mappedBy = "prtnInfoBase")
+    private List<Resrv> resrvList = new ArrayList<Resrv>();
+
+    @OneToMany(mappedBy = "prtnInfoBase")
+    private List<PrtnAssmt> prtnAssmtList = new ArrayList<PrtnAssmt>();
+
+    @OneToMany(mappedBy = "prtnInfoBase")
+    private List<Handwork> handworks = new ArrayList<Handwork>();
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "IMG_MGNT_NO")
+    private ImgMgnt imgMgnt;
 }
