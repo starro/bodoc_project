@@ -1,6 +1,8 @@
 package com.starro.bodoc.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by james@starroapp.com on 2019-08-07
@@ -9,17 +11,15 @@ import javax.persistence.*;
  * @description
  ********************************************************************************/
 @Entity
-@Table(name = "HANDWORK")
-public class Handwork {
+@Table(name = "REFRNCE")
+public class Refrnce {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "HANDWORK_NO")
-    private Long handworkNo;
-    private Long estmtNo;
-    private Long prtnNo;
+    @Column(name = "REFRNCE_NO")
+    private Long refrnceNo;
     private String handworkTyp;
-    private Long imgMgntNo;
-    private String handworkStatus;
+    private String refrnceStatus;
+    private String refrnceExpln;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRTN_NO")
@@ -32,4 +32,7 @@ public class Handwork {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "IMG_MGNT_NO")
     private ImgMgnt imgMgnt;
+
+    @OneToMany(mappedBy = "refrnce")
+    private List<Comment> Comments = new ArrayList<Comment>();
 }

@@ -15,7 +15,6 @@ public class Resrv {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "RESRV_NO")
     private Long resrvNo;
-    private Long custNo;
     private String resrvNm;
     private String resrvDate;
     private String pckupYn;

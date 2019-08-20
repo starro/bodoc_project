@@ -49,7 +49,7 @@ public class PrtnInfoBase {
     private List<PrtnAssmt> prtnAssmtList = new ArrayList<PrtnAssmt>();
 
     @OneToMany(mappedBy = "prtnInfoBase")
-    private List<Handwork> handworks = new ArrayList<Handwork>();
+    private List<Refrnce> refrnces = new ArrayList<Refrnce>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "IMG_MGNT_NO")

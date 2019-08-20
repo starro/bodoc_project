@@ -36,5 +36,5 @@ public class Estmt {
     private PrtnAssmt prtnAssmt;
 
     @OneToOne(mappedBy = "estmt")
-    private Handwork handwork;
+    private Refrnce refrnce;
 }

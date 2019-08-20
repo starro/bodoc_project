@@ -29,5 +29,5 @@ public class ImgMgnt {
     private PrtnInfoBase prtnInfoBase;
 
     @OneToOne(mappedBy = "imgMgnt")
-    private Handwork handwork;
+    private Refrnce refrnce;
 }
