@@ -13,9 +13,10 @@ public class Comment {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "COMMENT_NO")
     private Long commentNo;
+    private Long grpNo;
     private Long parentCommentNo;
-    private int grpOrd;
     private Long grpLayer;
+    private int commentOrd;
     private String cntnt;
     private String userTyp;
     private Long userNo;
