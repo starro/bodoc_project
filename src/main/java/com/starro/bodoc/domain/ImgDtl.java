@@ -24,6 +24,6 @@ public class ImgDtl {
     @JoinColumn(name = "IMG_MGNT_NO")
     private ImgMgnt imgMgnt;
 
-    @OneToMany(mappedBy = "imgDtl")
+    @OneToMany(mappedBy = "imgDtl", cascade = CascadeType.ALL)
     private List<ImgHashtag> imgHashtagList = new ArrayList<ImgHashtag>();
 }

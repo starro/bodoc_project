@@ -8,6 +8,8 @@ import javax.persistence.*;
  * @author StarroApp
  * @description
  ********************************************************************************/
+@Entity
+@Table(name = "COMMENT")
 public class Comment {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

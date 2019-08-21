@@ -10,6 +10,8 @@ import java.util.List;
  * @author StarroApp
  * @description
  ********************************************************************************/
+@Entity
+@Table(name = "HASHTAG")
 public class Hashtag {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

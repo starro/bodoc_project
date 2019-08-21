@@ -8,6 +8,8 @@ import javax.persistence.*;
  * @author StarroApp
  * @description
  ********************************************************************************/
+@Entity
+@Table(name = "IMG_HASHTAG")
 public class ImgHashtag {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

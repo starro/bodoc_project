@@ -35,7 +35,6 @@ public class PrtnInfoBase {
     private String wdngDealYn;
     private String aprslAvailYn;
     private String prtnKwrd;
-    private String imgMgntNo;
     private String prtnIntroCntnt;
     private String actvYn;
 
