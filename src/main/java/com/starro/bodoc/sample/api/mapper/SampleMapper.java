@@ -15,8 +15,8 @@ public interface SampleMapper {
 
     SampleMapper mapper = Mappers.getMapper(SampleMapper.class);
 
-    Sample toSample (SampleForm.Request.Add form);
-    Sample  toSample (Long id, SampleForm.Request.Modify form);
+    Sample toSample(SampleForm.Request.Add form);
+    Sample toSample(Long id, SampleForm.Request.Modify form);
     SampleForm.Response.FindOne toFindOne(Sample entity);
     SampleForm.Response.FindAll toFindAll(Sample entity);
 
