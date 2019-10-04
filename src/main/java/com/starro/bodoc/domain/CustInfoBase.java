@@ -37,12 +37,22 @@ public class CustInfoBase {
             @AttributeOverride(name = "phoneNo", column = @Column(name = "MOBILE_NO", length = 20, nullable = false))
     })
     private Phone mobileNo;
-    private String email;
+    /**
+     * 이메일
+     */
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "email", column = @Column(name = "EMAIL", nullable = false))
+    })
+    private Email email;
     private String socialNo;
     private String socialTyp;
     private String socialImgUrl;
     private String refreshToken;
-    private String actvYn;
+
+    @Column(name = "ACTIVE_YN", length = 1)
+    @Enumerated(EnumType.STRING)
+    private ActivYn actvYn;
 
     @CreationTimestamp
     @Column(name = "create_at", nullable = false, updatable = false)
@@ -61,17 +71,21 @@ public class CustInfoBase {
     private List<Resrv> resrvList = new ArrayList<Resrv>();
 
     @Builder
-    public CustInfoBase(String password, String custNm, String nickNm, String mobileNo, String email, String socialNo,
-                        String socialTyp, String socialImgUrl, String refreshToken, String actvYn) {
+    public CustInfoBase(String password, String custNm, String nickNm, Phone mobileNo, Email email, String socialNo,
+                        String socialTyp, String socialImgUrl, String refreshToken, ActivYn actvYn) {
         this.password = password;
         this.custNm = custNm;
         this.nickNm = nickNm;
-        this.mobileNo = Phone.builder().phoneNo(mobileNo).build();
+        this.mobileNo = mobileNo;
         this.email = email;
         this.socialNo = socialNo;
         this.socialTyp = socialTyp;
         this.socialImgUrl = socialImgUrl;
         this.refreshToken = refreshToken;
         this.actvYn = actvYn;
+    }
+
+    public enum ActivYn {
+        Y,N
     }
 }

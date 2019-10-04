@@ -35,7 +35,14 @@ public class EstmtReqGoodsAtrb {
     @Column(name = "update_at", nullable = false)
     private LocalDateTime updateAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="ESTMT_REQ_NO")
+    @ManyToOne
+    @JoinColumn(name ="ESTMT_REQ_NO", nullable = false, updatable = false)
     private EstmtReqBase estmtReqBase;
+
+    @Builder
+    public EstmtReqGoodsAtrb(String goodsMtrl, String goodsMtrlPrpt, EstmtReqBase estmtReqBase) {
+        this.goodsMtrl = goodsMtrl;
+        this.goodsMtrlPrpt = goodsMtrlPrpt;
+        this.estmtReqBase = estmtReqBase;
+    }
 }
