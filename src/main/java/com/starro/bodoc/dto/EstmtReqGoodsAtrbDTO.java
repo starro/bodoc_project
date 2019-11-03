@@ -22,6 +22,7 @@ import java.time.LocalDate;
 @Data
 public class EstmtReqGoodsAtrbDTO {
 
+    private Long estmtReqGoodsAtrbtNo;
     private String goodsMtrl;
     private String goodsMtrlPrpt;
 }

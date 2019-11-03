@@ -1,5 +1,6 @@
 package com.starro.bodoc.domain;
 
+import com.rabbitmq.client.LongString;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,13 +16,14 @@ import java.time.LocalDateTime;
  ********************************************************************************/
 @Entity
 @Table(name = "ESTMT_REQ_GOODS_ATRBT")
+@Setter
 @Getter
 @ToString(exclude = {"estmtReqBase"})
 @EqualsAndHashCode(exclude = {"estmtReqBase"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EstmtReqGoodsAtrb {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ESTMT_REQ_GOODS_ATRBT_NO")
     private Long estmtReqGoodsAtrbtNo;
 
@@ -30,13 +32,13 @@ public class EstmtReqGoodsAtrb {
 
     @CreationTimestamp
     @Column(name = "create_at", nullable = false, updatable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column(name = "update_at", nullable = false)
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name ="ESTMT_REQ_NO", nullable = false, updatable = false)
+    @JoinColumn(name = "ESTMT_REQ_NO", nullable = false, updatable = false)
     private EstmtReqBase estmtReqBase;
 
     @Builder

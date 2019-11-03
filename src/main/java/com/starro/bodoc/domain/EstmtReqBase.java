@@ -18,8 +18,8 @@ import java.util.List;
  ********************************************************************************/
 @Entity
 @Table(name = "ESTMT_REQ_BASE")
+@Setter
 @Getter
-@ToString(exclude = {"custInfoBase", "imgMgnt", "estmtReqGoodsAtrbList", "estmtList"})
 @EqualsAndHashCode(exclude = {"custInfoBase", "imgMgnt", "estmtReqGoodsAtrbList", "estmtList"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EstmtReqBase {
@@ -41,11 +41,11 @@ public class EstmtReqBase {
 
     @CreationTimestamp
     @Column(name = "create_at", nullable = false, updatable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "update_at", nullable = false)
-    private LocalDateTime updateAt;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CUST_NO")
@@ -63,7 +63,8 @@ public class EstmtReqBase {
 
     @Builder
     public EstmtReqBase(String estmtTyp, String insrnceYn, String wrntYn, String aprslReqYn, String pckupReqYn,
-                        String promoNo, String reqCntnt, String goodsTyp, String brndNm, String modelNm, String goodsExpln) {
+                        String promoNo, String reqCntnt, String goodsTyp, String brndNm, String modelNm, String goodsExpln
+            , List<EstmtReqGoodsAtrb> estmtReqGoodsAtrbList) {
         this.estmtTyp = estmtTyp;
         this.insrnceYn = insrnceYn;
         this.wrntYn = wrntYn;
@@ -75,22 +76,6 @@ public class EstmtReqBase {
         this.brndNm = brndNm;
         this.modelNm = modelNm;
         this.goodsExpln = goodsExpln;
-    }
-
-    public void setCustInfoBase(CustInfoBase custInfoBase) {
-        this.custInfoBase = custInfoBase;
-        custInfoBase.getEstmtReqBaseList().add(this);
-    }
-
-    public void addEstmtReqGoodsAtrb(EstmtReqGoodsAtrbDTO estmtReqGoodsAtrbDTO) {
-        this.estmtReqGoodsAtrbList.add(buildAtrb(estmtReqGoodsAtrbDTO));
-    }
-
-    private EstmtReqGoodsAtrb buildAtrb(EstmtReqGoodsAtrbDTO estmtReqGoodsAtrbDTO) {
-        return EstmtReqGoodsAtrb.builder()
-                .goodsMtrl(estmtReqGoodsAtrbDTO.getGoodsMtrl())
-                .goodsMtrlPrpt(estmtReqGoodsAtrbDTO.getGoodsMtrlPrpt())
-                .estmtReqBase(this)
-                .build();
+        this.estmtReqGoodsAtrbList = estmtReqGoodsAtrbList;
     }
 }

@@ -30,8 +30,7 @@ public class CustInfoBaseRepositoryTest {
     public void crud(){
         QCustInfoBase custInfoBase = QCustInfoBase.custInfoBase;
         Predicate predicate = QCustInfoBase.custInfoBase
-                .custNm.containsIgnoreCase("sanghoon")
-                .and(custInfoBase.actvYn.equalsIgnoreCase("N"));
+                .custNm.containsIgnoreCase("sanghoon");
 
         Optional<CustInfoBase> custOne = custInfoBaseRepository.findOne(predicate);
         assertThat(custOne).isEmpty();
